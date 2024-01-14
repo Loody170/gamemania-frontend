@@ -1,13 +1,52 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+  h5{
+    @apply absolute px-6 duration-200 w-52
+             bottom-4 md:bottom-8 md:px-10
+              group-hover:scale-110
+               group-hover:text-black;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.item-container {
+  @apply flex flex-col w-full space-y-6 text-2xl
+         text-white uppercase md:flex-row
+          md:space-y-0 md:space-x-4;
+}
+
+.item {
+  @apply relative overflow-hidden md:w-1/4;
+}
+
+.item-gradiant {
+  @apply absolute top-0 bottom-0 right-0 left-0
+             bg-gradient-to-b from-transparent to-gray-800
+            group-hover:from-gray-50 group-hover:to-white group-hover:opacity-40;
+}
+
+.image-gradiant{
+  @apply absolute top-0 bottom-0 right-0 left-0
+             bg-gradient-to-b from-transparent to-gray-800;
+}
+
+.tab{
+  @apply  w-full p-4 border-r
+   border-gray-200 
+   /* dark:border-gray-700 */
+    rounded-lg
+    focus:outline-none
+    text-lg tracking-wider
+     /* dark:bg-gray-700 dark:text-white */
+     ;
 }
