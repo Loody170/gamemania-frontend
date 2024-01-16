@@ -2,10 +2,10 @@ import HomeSection from '../components/HomeSection';
 // import { useQuery } from '@tanstack/react-query';
 // import { getGames } from '../util/http';
 import PlatformSection from '../components/best-games/PlatformSection';
-import { useState } from 'react';
-import Modal from '../components/UI/Modal';
+// import { useState } from 'react';
+// import Modal from '../components/UI/Modal';
 function HomePage() {
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
 
   console.log("home page renderes");
   return (

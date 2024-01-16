@@ -27,8 +27,8 @@ function Footer() {
 
           </div>
 
-          <div class="flex flex-col items-start justify-between space-y-4 text-gray-500">
-            <div class="font-bold mr-2">
+          <div className="flex flex-col items-start justify-between space-y-4 text-gray-500">
+            <div className="font-bold mr-2">
               © 2024 GameMania.
               <p>Developed By Khalid Sharafaldeen. All Rights Reserved</p>
             </div>

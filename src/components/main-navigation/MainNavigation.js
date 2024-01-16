@@ -1,9 +1,17 @@
 import { Link } from 'react-router-dom';
 import logo from '../../images/gamemania-logo-3.png';
 import SearchBar from './SearchBar';
-
+import { useContext } from 'react';
+import { AuthContext } from '../../store/auth-ctx';
+import Authentication from '../auth/Authentication';
+import { useState } from 'react';
 function MainNavigation() {
-   
+    const {isLoggedIn,
+        //  signIn, signOut
+        } = useContext(AuthContext);
+
+        const [showAuthentication, setShowAuthentication] = useState(false);
+
     return (
         <header className="bg-gray-800 container max-w-full mx-auto px-6 py-4 pt-6">
             <div className='flex justify-center'>
@@ -27,16 +35,15 @@ function MainNavigation() {
                     </div>
                     <SearchBar />
                     
-                    <div className="group">
-                        <Link href="#" className='px-8 py-2 text-white
+                    {!isLoggedIn && <button className="group" onClick={()=>setShowAuthentication(true)}>
+                        <span className='px-8 py-2 text-white
                          bg-red-800 border border-red-800
                           rounded-full shadow-md hover:text-red-800 hover:border-gray-200
-                           hover:bg-gray-200'>Login</Link>
-                        {/* <div className="mx-2 mt-2 group-hover:border-b group-hover:border-blue-500" /> */}
-                    </div>
+                           hover:bg-gray-200'>Sign In</span>
+                    </button>}
                 </div>
-
             </nav>
+            {showAuthentication && <Authentication show={showAuthentication} onClose={()=>setShowAuthentication(false)} />}
         </header>
     );
 }

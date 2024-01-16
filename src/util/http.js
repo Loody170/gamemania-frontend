@@ -15,3 +15,37 @@ export const getGames = async (q) => {
     return data;
 };
 
+export const signup = async (authData) => {
+    console.log("inside signup");
+    console.log(authData.username);
+    const response = await fetch('http://localhost:8080/auth/signup', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: authData.username,
+            email: authData.email,
+            password: authData.password,
+            confirmPassword: authData.confirmPassword
+        })
+    });
+
+    if (!response.ok) {
+        // const error = 
+        // new Error('An error occurred while signing up');
+        // error.code = response.status;
+        // error.info = await response.json();
+        // throw error;
+        const errorData = await response.json();
+        const error = errorData;
+        error.code = response.status;
+        // error.info = await response.json();
+        throw error;
+    }
+
+    const data = await response.json();
+    return data;
+};
+
+

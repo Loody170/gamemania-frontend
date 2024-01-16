@@ -7,6 +7,8 @@ import CategoryPage from "./pages/CategoryPage";
 import { queryClient } from "./util/http";
 import { QueryClientProvider } from "@tanstack/react-query";
 import SearchResultsPage from "./pages/SearchResultsPage";
+import { useState } from "react";
+import { AuthContext } from "./store/auth-ctx";
 
 const router = createBrowserRouter([
   {
@@ -38,11 +40,27 @@ const router = createBrowserRouter([
   },
 ]);
 
+
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const signIn = () => {
+    // Perform sign in operation here
+    setIsLoggedIn(true);
+  };
+
+  const signOut = () => {
+    // Perform sign out operation here
+    setIsLoggedIn(false);
+  };
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, signIn, signOut }}>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </AuthContext.Provider>
+
     // <RouterProvider router={router} />
   );
 }

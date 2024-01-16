@@ -50,3 +50,11 @@
      /* dark:bg-gray-700 dark:text-white */
      ;
 }
+
+.input{
+  @apply border-b border-gray-200 focus:outline-none focus:border-gray-500;
+}
+
+.input-error{
+  @apply text-red-600 text-sm;
+}
