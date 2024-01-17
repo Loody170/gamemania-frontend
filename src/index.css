@@ -58,3 +58,11 @@
 .input-error{
   @apply text-red-600 text-sm;
 }
+
+.user-box{
+  @apply block capitalize cursor-pointer
+  text-lg px-2 py-1 bg-gray-800 font-bold
+text-white hover:text-white hover:bg-sky-700
+  border-2 rounded-lg overflow-hidden
+  overflow-ellipsis whitespace-nowrap max-w-[180px];
+}

@@ -41,16 +41,15 @@ function GamePage() {
     }
     return (
         <>
-
-            <div className="relative w-full h-44 md:h-48 lg:h-72">
-
+            <div className="relative w-full h-44 md:h-48 lg:h-72 -z-10">
                 <img src={randomImageUrl !== "" ? randomImageUrl : blackScreen} alt="cover-art"
                     className="w-full h-full object-cover filter blur-sm" />
                 <div className="image-gradiant" />
             </div>
 
             {gameDetails.isLoading ? <div className="text-lg text-center mx-auto mt-10">Loading...</div> :
-                <GameItem image={gameDetails.data.data.imageUrl ? gameDetails.data.data.imageUrl : noCoverUrl} gameDetails={gameDetails.data.data.mainDetails} />}
+                <GameItem image={gameDetails.data.data.imageUrl ? gameDetails.data.data.imageUrl : noCoverUrl}
+                 gameDetails={gameDetails.data.data.mainDetails} />}
 
             {
                 isGallery &&
@@ -73,11 +72,6 @@ function GamePage() {
                     developer={gameDetails.data.data.mainDetails.developer}
                     genres={gameDetails.data.data.mainDetails.genresNames}
                     extraDetails={gameDetails.data.data.extraDetails} />}
-            {/* <GameInformation
-                releaseDate={gameDetails.data.data.mainDetails.releaseDate}
-                developer={gameDetails.data.data.mainDetails.developer}
-                genres={gameDetails.data.data.mainDetails.genresNames}
-                extraDetails={gameDetails.data.data.extraDetails} /> */}
 
             <HomeSection query={similarGamesQuery} queryKey={passedQueryKey} title="Similar Games" color="border-teal-400" />
         </>

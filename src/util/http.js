@@ -48,4 +48,30 @@ export const signup = async (authData) => {
     return data;
 };
 
+export const signIn = async(authData)=>{
+    console.log("inside sign in");
+    console.log(authData);
 
+    const response = await fetch('http://localhost:8080/auth/signin', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: authData.email,
+            password: authData.password,
+        })
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        const error = new Error(errorData.message);
+        error.code = response.status;
+        throw error;
+    }
+    const data = await response.json();
+    // localStorage.setItem('token', token);
+
+    return data;
+
+};

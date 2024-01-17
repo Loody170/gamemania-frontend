@@ -30,7 +30,7 @@ const Authentication = (props) => {
                     <div className="border border-gray-400" />
 
                 </div>
-                {activeTab === 'login' ? <Login /> : <SignUp />}
+                {activeTab === 'login' ? <Login setShow={props.setShow} /> : <SignUp  />}
             </Modal>
         </>
     );

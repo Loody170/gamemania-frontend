@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import logo from '../../images/gamemania-logo-3.png';
+import { useContext } from 'react';
+import { AuthContext } from '../../store/auth-ctx';
 function Footer() {
-  return (
+  const { isLoggedIn, signOut } = useContext(AuthContext);
 
+  return (
     <footer className="bg-gray-800">
       <div className='container max-w-6xl pt-8 pb-2 mt-8 mx-auto'>
         <div className='flex flex-col items-center mb-8 space-y-6 md:flex-row md:space-y-0 md:justify-between md:items-center'>
@@ -19,7 +22,8 @@ function Footer() {
               </div>
 
               <div className="h-10 group">
-                <Link to="/">Sign In</Link>
+               {/* {!isLoggedIn && <Link to="/">Sign In</Link>} */}
+               {isLoggedIn && <Link to="/" onClick={signOut}>Sign Out</Link>}
                 <div className="mx-2 group-hover:border-b group-hover:border-sky-400" />
               </div>
 

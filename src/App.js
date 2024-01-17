@@ -9,6 +9,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import { useState } from "react";
 import { AuthContext } from "./store/auth-ctx";
+import { useEffect } from "react";
 
 const router = createBrowserRouter([
   {
@@ -43,19 +44,68 @@ const router = createBrowserRouter([
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState(null);
 
-  const signIn = () => {
-    // Perform sign in operation here
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const expiryDate = localStorage.getItem('expiryDate');
+    const username = localStorage.getItem('username');
+
+    if (!token || !expiryDate) {
+        return;
+    }
+
+    if (new Date(expiryDate) <= new Date()) {
+        signOut();
+        return;
+    }
+
+    // const userId = localStorage.getItem('userId');
+    const remainingMilliseconds = new Date(expiryDate).getTime() - new Date().getTime();
+
     setIsLoggedIn(true);
+    setUsername(username);
+    autoSignOut(remainingMilliseconds);
+  }, []);
+
+
+
+  const signIn = (token, userId, username) => {
+    localStorage.setItem('token', token);
+    localStorage.setItem('userId', userId);
+    localStorage.setItem('username', username);
+
+    const remainingMilliseconds = 60 * 60 * 1000;
+    const expiryDate = new Date(new Date().getTime() + remainingMilliseconds);
+    localStorage.setItem('expiryDate', expiryDate.toISOString());
+
+    setIsLoggedIn(true);
+    setUsername(username);
+    // console.log("user name after setting is " + username);
+
+
+    autoSignOut(remainingMilliseconds);
   };
 
   const signOut = () => {
-    // Perform sign out operation here
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('expiryDate');
+    localStorage.removeItem('username');
+
     setIsLoggedIn(false);
+    setUsername(null);
   };
 
+  const autoSignOut = (milliseconds) => {
+    setTimeout(() => {
+        signOut();
+    }, milliseconds);
+};
+
   return (
-    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, signIn, signOut }}>
+    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, username: username, signIn, signOut }}>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
       </QueryClientProvider>

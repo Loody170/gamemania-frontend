@@ -28,7 +28,10 @@ const GameGallery = (props) => {
 
     return (
             <div className="relative">
-                <button onClick={() => scroll(600)} className="text-white text-5xl font-bold absolute top-44 left-0 z-10 h-16 w-16 bg-black bg-opacity-80">{"<"}</button>
+                <button onClick={() => scroll(600)} 
+                className="text-white text-5xl font-bold 
+                absolute top-44 left-0 z-10 h-16 w-16
+              bg-black bg-opacity-80">{"<"}</button>
                 <button onClick={() => scroll(-600)} className="text-white text-5xl font-bold absolute top-44 right-0 z-10 w-16 h-16 bg-black bg-opacity-80">{">"}</button>
 
                 <div ref={scrollContainerRef} className="flex overflow-x-auto hide-scrollbar

@@ -1,6 +1,14 @@
+import { useState } from "react";
 function GameDescription(props) {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const maxLength = 100;
+     
+    const handleShowMore = () => {
+        setIsExpanded(!isExpanded);
+      };
+  
     return (
-        <div className="border-2 border-green-600 min-w-sm  max-w-2xl overflow-auto">
+        <div className="border-2 border-green-600  max-w-2xl overflow-auto">
             <h1 className="text-3xl">
                 About
             </h1>
