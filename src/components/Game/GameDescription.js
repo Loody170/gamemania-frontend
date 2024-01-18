@@ -1,17 +1,36 @@
 import { useState } from "react";
 function GameDescription(props) {
     const [isExpanded, setIsExpanded] = useState(false);
-    const maxLength = 100;
+    const maxLength = 360;
      
     const handleShowMore = () => {
         setIsExpanded(!isExpanded);
       };
+
+      const renderSummary = () => {
+        if (props.summary.length <= maxLength) {
+          return props.summary;
+        }
+    
+        if (isExpanded) {
+          return (
+            <span> 
+              {props.summary} -- 
+              <button onClick={handleShowMore} className="text-blue-500">Show less</button>
+            </span>
+          );
+        }
+    
+        return (
+          <span>
+            {props.summary.substring(0, maxLength)}... -    
+            <button onClick={handleShowMore} className="text-blue-500">- Show more</button>
+          </span>
+        );
+      };
   
     return (
-        <div className="border-2 border-green-600  max-w-2xl overflow-auto">
-            <h1 className="text-3xl">
-                About
-            </h1>
+        <div className="mt-4  w-full h-full ">
             <div className="my-2">
                 <span className="font-bold">Genre: </span>
                 <span>{props.genres.map(genre=>genre).join(", ")}</span>
@@ -22,7 +41,7 @@ function GameDescription(props) {
             </div>
 
             <p className="my-2 text-md">
-                {props.summary}
+                {renderSummary()}
             </p>
         </div>
     );

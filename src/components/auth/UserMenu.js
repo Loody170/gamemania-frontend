@@ -1,11 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const UserMenu = (props) => {
+    const menuRef = useRef(); 
+
     const [showMenu, setShowMenu] = useState(false);
 
     const toggleMenu = () => {
         setShowMenu(prevShowMenu => !prevShowMenu);
     };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShowMenu(false); 
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    
+    // Cleanup function to remove event listener
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
     const handleSignOut = () => {
         props.onSignOut();
@@ -31,7 +47,7 @@ const UserMenu = (props) => {
                     </span>
 
                     {showMenu && (
-                        <div className="dropdown-menu absolute right-3 bg-gray-100 border rounded shadow-2xl mt-2 w-48 px-4 py-2 ">
+                        <div ref={menuRef} className="dropdown-menu absolute right-3 bg-gray-100 border rounded shadow-2xl mt-2 w-48 px-4 py-2 ">
                             {/* Sign out svg */}
                             <button className="flex space-x-2 text-black hover:text-sky-700" onClick={handleSignOut}>
                                 <svg xmlns="http://www.w3.org/2000/svg"

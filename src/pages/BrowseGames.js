@@ -51,9 +51,6 @@ function BrowseGames() {
         switch (selectedTab) {
             case 'genres':
                 return <>
-                    {/* <h2 className="mb-8 text-2xl text-center md:-ml-12 md:text-left md:text-4xl">
-                        Genres
-                    </h2> */}
                     <CategoriesList items={gameGenres.slice(0, 4)} type="genres" />
                     <CategoriesList items={gameGenres.slice(4, 8)} type="genres" />
                     <CategoriesList items={gameGenres.slice(8, 12)} type="genres" />
@@ -70,7 +67,6 @@ function BrowseGames() {
                     <CategoriesList items={gamePlatforms.slice(0, 4)} type="platforms" />
                     <CategoriesList items={gamePlatforms.slice(4, 8)} type="platforms" />
                     <CategoriesList items={gamePlatforms.slice(8, 10)} type="platforms" />
-
                 </>;
             default:
                 return null;
@@ -83,24 +79,7 @@ function BrowseGames() {
                 </button> */}
 
             <div className='my-12 container mx-auto max-w-7xl px-6 text-gray-900 md:px-0'>
-                {/* <div className='flex space-x-4 items-center'>
-                    <button
-                        className={`px-4 py-2 rounded ${selectedTab === 'genres' ? 'bg-blue-500 text-white' : 'bg-white text-black'}`}
-                        onClick={() => setSelectedTab('genres')}>
-                        Genres
-                    </button>
-                    <button
-                        className={`px-4 py-2 rounded ${selectedTab === 'themes' ? 'bg-blue-500 text-white' : 'bg-white text-black'}`}
-                        onClick={() => setSelectedTab('themes')}>
-                        Themes
-                    </button>
-                    <button
-                        className={`px-4 py-2 rounded ${selectedTab === 'platforms' ? 'bg-blue-500 text-white' : 'bg-white text-black'}`}
-                        onClick={() => setSelectedTab('platforms')}>
-                        Platforms
-                    </button>
-                </div> */}
-                <ul className="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
+                <ul className="hidden tabs-ul rounded-lg shadow sm:flex">
                     <li className="w-full">
                         <button className={`tab ${selectedTab === 'genres' ? 'bg-red-900 text-white' : 'bg-gray-100 text-gray-900'}`}
                             onClick={() => setSelectedTab('genres')}>

@@ -19,14 +19,15 @@ function GameRating(props) {
     };
 };
 const ratingClass = `w-16 h-16 ${getColor(props.rating)} flex items-center justify-center rounded-lg `;
+
 return (
-    <div className="border-2 border-purple-600 min-w-xsm flex items-center space-x-4">
+    <div className="border-2 border-fuchsia-600 w-auto flex items-center space-x-4">
         <div className={ratingClass}>
             <span className="text-white text-2xl font-bold">{props.rating ? props.rating : "-"}</span>
         </div>
-        <div>
-            <p className="text-xl font-bold">{ratingWord}</p>
-            {ratingWord === "No rating"? "": <p className="text-gray-500">Based on {props.ratingCount} users reviews</p>}
+        <div >
+            <p className="text-xl font-bold ">{ratingWord}</p>
+            {ratingWord === "No rating"? "": <p className=" text-gray-500 ">Based on {props.ratingCount} users reviews</p>}
         </div>
     </div>
 );

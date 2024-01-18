@@ -40,6 +40,10 @@
              bg-gradient-to-b from-transparent to-gray-800;
 }
 
+.tabs-ul{
+  @apply text-sm font-medium text-center text-gray-500;
+}
+
 .tab{
   @apply  w-full p-4 border-r
    border-gray-200 
@@ -47,6 +51,16 @@
     rounded-lg
     focus:outline-none
     text-lg tracking-wider
+     /* dark:bg-gray-700 dark:text-white */
+     ;
+}
+
+.game-tab{
+  @apply  w-full p-4
+   /* border-r-2 border-r-gray-300 */
+   /* dark:border-gray-700 */
+    focus:outline-none
+    text-lg tracking-widest
      /* dark:bg-gray-700 dark:text-white */
      ;
 }

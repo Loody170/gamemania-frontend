@@ -41,7 +41,7 @@ function GamePage() {
     }
     return (
         <>
-            <div className="relative w-full h-44 md:h-48 lg:h-72 -z-10">
+            <div className="relative w-full h-60 md:h-48 lg:h-72 -z-10">
                 <img src={randomImageUrl !== "" ? randomImageUrl : blackScreen} alt="cover-art"
                     className="w-full h-full object-cover filter blur-sm" />
                 <div className="image-gradiant" />
