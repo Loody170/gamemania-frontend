@@ -1,5 +1,6 @@
 const GameVideo = (props) => {
     const videoUrl = `https://www.youtube-nocookie.com/embed/${props.videoId}`;
+    
     return (
         <>
             <div className="mx-2">

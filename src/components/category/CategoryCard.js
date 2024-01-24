@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 function CategoryCard({ slug, title, type }) {
-    // console.log(slug, title, type);
     const image = require(`../../images/${type}/${slug}.jpg`);
-    // console.log(`../images/${type}/${slug}.jpg`);
     return (
         <div className="group item h-48 cursor-pointer">
             <Link to={`/categories/${type}/${slug}`}>
@@ -15,7 +13,6 @@ function CategoryCard({ slug, title, type }) {
                 <h5 className="">{title}</h5>
             </Link>
         </div>
-
     );
 }
 

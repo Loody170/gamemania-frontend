@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import GameDescription from '../GameDescription';
 import GameTab from './GameTab';
 import GameWebsite from '../GameWebsite';
-import { Link } from 'react-router-dom';
 import ListTab from './ListsTab';
 
 const GameTabs = (props) => {
     const [selectedTab, setSelectedTab] = useState('About');
+
     const renderTabContent = () => {
         switch (selectedTab) {
             case 'About':
@@ -22,10 +22,9 @@ const GameTabs = (props) => {
                             </div>
                         ) : (<p className='text-xl flex justify-center mt-10'>No websites available</p>)}
                     </>);
-
             case 'Add To':
                 return (
-                   <ListTab />
+                    <ListTab />
                 );
             default:
                 return null;

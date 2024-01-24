@@ -6,5 +6,4 @@ export const AuthContext = createContext({
     signOut: () => {},
     showAuthentication: false,
     setShowAuthentication: () => {},
-    // setLoggedIn: () => {},
 });

@@ -7,19 +7,16 @@ import { useParams } from 'react-router-dom';
 import { addGame, deleteGame } from "../../../util/http";
 
 const ListTab = (props) => {
+    const [gameLists, setGameLists] = useState([]);
+    const { isLoggedIn, setShowAuthentication } = useContext(AuthContext);
     const queryClient = useQueryClient();
+
     const params = useParams();
     const gameId = params.id;
-
-    const { isLoggedIn, setShowAuthentication } = useContext(AuthContext);
-    console.log("user is authenticated for listtab?: " + isLoggedIn);
-
-    const [gameLists, setGameLists] = useState([]);
 
     const addGameMutation = useMutation({
         mutationFn: addGame,
         onSuccess: (data) => {
-            console.log(data);
             queryClient.invalidateQueries(["lists"]);
         },
         onError: (error) => {
@@ -34,7 +31,7 @@ const ListTab = (props) => {
             queryClient.invalidateQueries(["lists"]);
         },
         onError: (error) => {
-            console.log(error.message);
+            // console.log(error.message);
         }
     });
 
@@ -46,9 +43,6 @@ const ListTab = (props) => {
         refetchOnReconnect: false,
         enabled: isLoggedIn
     });
-    if(lists.isSuccess){
-        console.log(lists.data); 
-    }
 
     useEffect(() => {
         if (lists.isSuccess) {
@@ -83,7 +77,6 @@ const ListTab = (props) => {
         setGameLists(updatedGameLists);
     };
 
-
     return (
         <>
             {(isLoggedIn && lists.isSuccess && gameLists.length > 0) ? (
@@ -96,7 +89,9 @@ const ListTab = (props) => {
                             className="form-checkbox h-5 w-5 text-red-800"
                             checked={list.hasGame}
                         />
-                        <label htmlFor={`list-${list._id}`} className="text-2xl font-semibold">{list.name}</label>
+                        <label htmlFor={`list-${list._id}`} className="text-2xl font-semibold">
+                            {list.name}
+                        </label>
                     </div>
                 ))
             ) :
@@ -105,7 +100,9 @@ const ListTab = (props) => {
                     <Link onClick={checkAuth}
                         to='/users/newlist'
                         className='inline-block red-button
-                        my-6 mx-6'>Create new list</Link>
+                        my-6 mx-6'>
+                        Create new list
+                    </Link>
                 </div>}
         </>
     );

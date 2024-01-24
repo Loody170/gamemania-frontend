@@ -1,14 +1,14 @@
+import { useState, useEffect, useCallback } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { AuthContext } from "./store/auth-ctx";
+import { queryClient } from "./util/http";
 import HomePage from "./pages/Home";
 import BrowseGames from "./pages/BrowseGames";
 import RootLayout from "./pages/Root";
 import GamePage, { loader } from "./pages/GamePage";
 import CategoryPage from "./pages/CategoryPage";
-import { queryClient } from "./util/http";
-import { QueryClientProvider } from "@tanstack/react-query";
 import SearchResultsPage from "./pages/SearchResultsPage";
-import { useState, useEffect, useCallback } from "react";
-import { AuthContext } from "./store/auth-ctx";
 import NewList from "./pages/NewList";
 import UserLists from "./pages/UserLists";
 import ListGames from "./pages/ListGames";
@@ -43,7 +43,8 @@ const router = createBrowserRouter([
         path: "/users",
         children: [
           {
-            path: "lists", element: <UserLists />,},
+            path: "lists", element: <UserLists />,
+          },
           { path: "lists/:id", element: <ListGames /> },
           { path: "newlist", element: <NewList /> },
         ]
@@ -58,7 +59,6 @@ function App() {
   const [username, setUsername] = useState(null);
   const [showAuthentication, setShowAuthentication] = useState(false);
 
-
   const signIn = (token, userId, username) => {
     localStorage.setItem('token', token);
     localStorage.setItem('userId', userId);
@@ -70,8 +70,6 @@ function App() {
 
     setIsLoggedIn(true);
     setUsername(username);
-    // console.log("user name after setting is " + username);
-
     autoSignOut(remainingMilliseconds);
   };
 
@@ -85,7 +83,6 @@ function App() {
     setUsername(null);
   };
 
-
   const autoSignOut = useCallback((milliseconds) => {
     setTimeout(() => {
       signOut();
@@ -96,17 +93,13 @@ function App() {
     const token = localStorage.getItem('token');
     const expiryDate = localStorage.getItem('expiryDate');
     const username = localStorage.getItem('username');
-
     if (!token || !expiryDate) {
       return;
     }
-
     if (new Date(expiryDate) <= new Date()) {
       signOut();
       return;
     }
-
-    // const userId = localStorage.getItem('userId');
     const remainingMilliseconds = new Date(expiryDate).getTime() - new Date().getTime();
 
     setIsLoggedIn(true);
@@ -116,7 +109,13 @@ function App() {
 
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, showAuthentication: showAuthentication, setShowAuthentication: setShowAuthentication, username: username, signIn, signOut }}>
+    <AuthContext.Provider value={{
+      isLoggedIn: isLoggedIn,
+      showAuthentication: showAuthentication,
+      setShowAuthentication: setShowAuthentication,
+      username: username, 
+      signIn, signOut 
+      }}>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
       </QueryClientProvider>

@@ -1,9 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base{
-  h5{
+@layer base {
+  h5 {
     @apply absolute px-6 duration-200 w-52
              bottom-4 md:bottom-8 md:px-10
               group-hover:scale-110
@@ -17,6 +16,49 @@
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.nav-footer-hover {
+  @apply mx-2 group-hover:border-b group-hover:border-sky-400;
+}
+
+.navigation-signin-button {
+  @apply px-8 py-2 text-white
+  bg-red-800 border border-red-800
+   rounded-full shadow-md hover:text-red-800 hover:border-gray-200
+    hover:bg-gray-200 whitespace-nowrap;
+}
+
+.search-bar-input {
+  @apply text-gray-800 w-80 placeholder:text-gray-400 px-2 py-1 rounded-lg bg-gray-100 font-normal;
+}
+
+.auth-active-tab-border {
+  @apply border-b-4 border-gray-600 absolute -bottom-[0.40rem] left-0 right-0;
+}
+
+.auth-submit-button {
+  @apply bg-red-700 hover:bg-red-900
+   text-white font-semibold 
+   py-2 rounded shadow-lg 
+   hover:shadow-xl 
+   transition duration-200;
+}
+
+.user-menu{
+  @apply absolute right-3 bg-gray-100 border rounded shadow-2xl mt-2 w-48 px-4 py-2;
+}
+
+.user-menu-button{
+  @apply mt-1 flex space-x-2 text-black hover:text-sky-700;
+}
+
+.newlist-input{
+  @apply my-4 max-w-5xl mx-2 md:mx-0 flex flex-col space-y-0 md:flex-row md:space-x-24 md:space-y-0;
+}
+
+.newlist-submit-message{
+  @apply text-center font-semibold mt-4 mb-4 text-white p-2 rounded-lg;
 }
 
 .item-container {
@@ -35,45 +77,72 @@
             group-hover:from-gray-50 group-hover:to-white group-hover:opacity-40;
 }
 
-.image-gradiant{
+.scroll-arrow {
+  @apply rounded-full px-2 ring-2 ring-black font-bold text-xl;
+}
+
+.gallery-scroll-arrow {
+  @apply text-white text-5xl font-bold 
+  absolute top-44 left-0 z-10 h-16 w-16
+bg-black bg-opacity-80;
+}
+
+.game-card {
+  @apply shadow-lg rounded-lg min-h-full
+   sm:h-104 md:h-120 w-40 md:w-48
+   xl:w-56 cursor-pointer transform transition
+   duration-500 ease-in-out
+   hover:shadow-2xl hover:scale-105;
+}
+
+.category-game-card {
+  @apply relative max-w-xs rounded-xl border border-gray-100 hover:border-gray-200
+  overflow-hidden shadow-md hover:shadow-2xl 
+  flex cursor-pointer pl-2 mb-8;
+}
+
+.remove-game-button {
+  @apply absolute bottom-0 left-32 mb-1 mr-1 md:text-[0.850rem]
+  font-semibold text-red-800 hover:text-red-600 hover:scale-110 duration-200;
+}
+
+.image-gradiant {
   @apply absolute top-0 bottom-0 right-0 left-0
              bg-gradient-to-b from-transparent to-gray-800;
 }
 
-.tabs-ul{
+.tabs-ul {
   @apply text-sm font-medium text-center text-gray-500;
 }
 
-.tab{
-  @apply  w-full p-4 border-r
+.tab {
+  @apply w-full p-4 border-r
    border-gray-200 
    /* dark:border-gray-700 */
     rounded-lg
     focus:outline-none
     text-lg tracking-wider
-     /* dark:bg-gray-700 dark:text-white */
-     ;
+     /* dark:bg-gray-700 dark:text-white */;
 }
 
-.game-tab{
-  @apply  w-full p-4
+.game-tab {
+  @apply w-full p-4
    /* border-r-2 border-r-gray-300 */
    /* dark:border-gray-700 */
     focus:outline-none
     text-lg tracking-widest
-     /* dark:bg-gray-700 dark:text-white */
-     ;
+     /* dark:bg-gray-700 dark:text-white */;
 }
 
-.input{
+.input {
   @apply border-b border-gray-200 focus:outline-none focus:border-gray-500;
 }
 
-.input-error{
+.input-error {
   @apply text-red-600 text-sm;
 }
 
-.user-box{
+.user-box {
   @apply block capitalize cursor-pointer
   text-lg px-2 py-1 bg-gray-800 font-bold
 text-white hover:text-white hover:bg-sky-700
@@ -81,22 +150,22 @@ text-white hover:text-white hover:bg-sky-700
   overflow-ellipsis whitespace-nowrap max-w-[180px];
 }
 
-.red-button{
-  @apply  text-sm font-semibold text-gray-200
+.red-button {
+  @apply text-sm font-semibold text-gray-200
       bg-red-700 border-2 border-red-700
         rounded-lg shadow-lg px-2 py-1
         hover:bg-red-800 hover:border-red-800;
 }
 
-.red-button-2{
-  @apply  text-sm font-semibold text-gray-200
+.red-button-2 {
+  @apply text-sm font-semibold text-gray-200
       bg-red-700 border-2 border-red-700
         rounded-md shadow-lg px-2 py-1
         hover:bg-red-800 hover:border-red-800;
 }
 
-.gray-button{
-  @apply  text-sm font-semibold text-gray-200
+.gray-button {
+  @apply text-sm font-semibold text-gray-200
       bg-gray-600 border-2 border-gray-600
         rounded-lg shadow-lg px-2 py-1
         hover:bg-gray-800 hover:border-gray-800;

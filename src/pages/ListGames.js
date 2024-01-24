@@ -1,7 +1,8 @@
+import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getList } from "../util/http";
-import { useParams } from "react-router-dom";
 import CategoryGameCard from "../components/category/CategoryGameCard";
+
 const ListGames = (props) => {
     const params = useParams();
     const games = useQuery({
@@ -11,12 +12,19 @@ const ListGames = (props) => {
         refetchOnWindowFocus: false,
         refetchOnReconnect: false,
     });
+
     let dynamicContent;
     if (games.isLoading) {
-        dynamicContent = <div className="text-lg text-center mx-auto mt-10">Loading...</div>;
+        dynamicContent =
+            <div className="text-lg text-center mx-auto mt-10">
+                Loading...
+            </div>;
     }
     else if (games.data.data.length === 0) {
-        dynamicContent = <div className="text-lg text-center mx-auto mt-10">No games in this list</div>;
+        dynamicContent =
+            <p className="text-lg text-center mx-auto mt-10">
+                No games in this list
+            </p>;
     }
     else {
         dynamicContent = games.data.data.map((game) => (
@@ -28,13 +36,11 @@ const ListGames = (props) => {
     }
 
     return (
-        <>
-            <div className="mx-auto max-w-6xl">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-2 mt-8">
-                    {dynamicContent}
-                </div>
+        <div className="mx-auto max-w-6xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-2 mt-8">
+                {dynamicContent}
             </div>
-        </>
+        </div>
     );
 };
 
