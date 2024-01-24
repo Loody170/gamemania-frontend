@@ -25,7 +25,10 @@ const SignUp = () => {
                 <div className="flex flex-col justify-center items-center">
                     <h1 className="text-3xl font-semibold mt-4">Welcome to GameMania!</h1>
                     <p className="text-sm text-gray-500 mt-2 text-center">Sign up to be able to create custom lists to save and organaize games inside them</p>
+                    {mutation.isError && <p className='text-red-500 font-semibold'>{mutation.error.message}</p>}
+
                 </div>
+
 
                 <Formik initialValues={{username: '', email: '', password: '', confirmPassword: '',}}
                 validationSchema={SignupSchema}

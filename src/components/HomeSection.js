@@ -3,18 +3,6 @@ import GameCard from './GameCard';
 import { useQuery } from '@tanstack/react-query';
 import { getGames } from '../util/http';
 
-// const games = [
-//     { id: '1', name: 'lies of p', type:"rgp", rating:"8" },
-//     { id: '2', name: 'lies of p', type:"rgp", rating:"8" },
-//     { id: '3', name: 'lies of p', type:"rgp", rating:"8" },
-//     { id: '4', name: 'lies of p', type:"rgp", rating:"8" },
-//     { id: '5', name: 'lies of p', type:"rgp", rating:"8" },
-//     { id: '6', name: 'lies of p', type:"rgp", rating:"8" },
-//     { id: '7', name: 'lies of p', type:"rgp", rating:"8" },
-//     { id: '8', name: 'lies of p', type:"rgp", rating:"8" },
-//     { id: '9', name: 'lies of p', type:"rgp", rating:"8" },
-//   ];
-
 function HomeSection(props) {
     console.log("react query");
     console.log(props.query);

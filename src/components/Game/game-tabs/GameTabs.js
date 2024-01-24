@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import GameDescription from '../GameDescription';
 import GameTab from './GameTab';
 import GameWebsite from '../GameWebsite';
+import { Link } from 'react-router-dom';
+import ListTab from './ListsTab';
 
 const GameTabs = (props) => {
     const [selectedTab, setSelectedTab] = useState('About');
@@ -10,19 +12,21 @@ const GameTabs = (props) => {
             case 'About':
                 return <GameDescription {...props} />;
             case 'Websites':
-
                 return (
                     <>
                         {props.websites && props.websites.length > 0 ? (
                             <div className='grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-0 mt-8'>
                                 {props.websites.map((website, index) => (
                                     <GameWebsite key={index} category={website.category} url={website.url} />
-                            ))}
+                                ))}
                             </div>
-                            ) : (<p className='text-xl flex justify-center mt-10'>No websites available</p>)}
+                        ) : (<p className='text-xl flex justify-center mt-10'>No websites available</p>)}
                     </>);
+
             case 'Add To':
-                return <div>Add To content goes here</div>;
+                return (
+                   <ListTab />
+                );
             default:
                 return null;
         }

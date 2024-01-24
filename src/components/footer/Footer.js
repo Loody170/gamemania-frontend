@@ -3,7 +3,7 @@ import logo from '../../images/gamemania-logo-3.png';
 import { useContext } from 'react';
 import { AuthContext } from '../../store/auth-ctx';
 function Footer() {
-  const { isLoggedIn, signOut } = useContext(AuthContext);
+  const { isLoggedIn, signOut, setShowAuthentication } = useContext(AuthContext);
 
   return (
     <footer className="bg-gray-800">
@@ -24,6 +24,8 @@ function Footer() {
               <div className="h-10 group">
                {/* {!isLoggedIn && <Link to="/">Sign In</Link>} */}
                {isLoggedIn && <Link to="/" onClick={signOut}>Sign Out</Link>}
+               {!isLoggedIn && <Link to="/" onClick={()=> setShowAuthentication(true)}>Sign In</Link>}
+
                 <div className="mx-2 group-hover:border-b group-hover:border-sky-400" />
               </div>
 

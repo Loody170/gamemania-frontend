@@ -37,6 +37,7 @@ const Login = (props) => {
                 <div className="flex flex-col justify-center items-center">
                     <h1 className="text-3xl font-semibold mt-4">Welcome back</h1>
                     <p className="text-sm text-gray-500 mt-2">Please login to continue</p>
+                    {mutation.isError && <p className='text-red-500 font-semibold'>{mutation.error.message}</p>}
                 </div>
 
                 <Formik initialValues={{ email: '', password: '', }}

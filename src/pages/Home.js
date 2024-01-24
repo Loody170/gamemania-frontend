@@ -17,8 +17,8 @@ function HomePage() {
         <p>Welcome to your new modal!</p>
       </Modal> */}
       <h1 className="mx-10 md:mx-28 py-2">Welcome to GameMania, your destination for video games knowledge!</h1>
+      <HomeSection query="anticipatedgames" queryKey={"anticipatedGames"} title="Anticipated Games" color="border-cyan-600" />
       <HomeSection query="recenttopgames" queryKey={"recentTopGames"} title="Top Recent Games" color="border-pink-600" />
-      <HomeSection query="newgames" queryKey={"newGames"} title="Recently Released" color="border-cyan-600" />
       <HomeSection query="upcominggames" queryKey={"comingSoon"} title="Coming Soon" color="border-green-600" />
 
       <div>

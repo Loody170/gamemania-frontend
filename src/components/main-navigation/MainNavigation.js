@@ -7,9 +7,11 @@ import Authentication from '../auth/Authentication';
 import { useState } from 'react';
 import UserMenu from '../auth/UserMenu';
 function MainNavigation(props) {
-    const { isLoggedIn, signOut, username } = useContext(AuthContext);
+    const { isLoggedIn, signOut, username,
+        showAuthentication,
+        setShowAuthentication } = useContext(AuthContext);
 // console.log(username);
-    const [showAuthentication, setShowAuthentication] = useState(false);
+    // const [showAuthentication, setShowAuthentication] = useState(false);
     console.log(props.className);
 
     return (

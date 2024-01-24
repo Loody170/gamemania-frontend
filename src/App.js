@@ -9,6 +9,9 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import { useState, useEffect, useCallback } from "react";
 import { AuthContext } from "./store/auth-ctx";
+import NewList from "./pages/NewList";
+import UserLists from "./pages/UserLists";
+import ListGames from "./pages/ListGames";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +39,15 @@ const router = createBrowserRouter([
           { index: true, element: <SearchResultsPage /> },
         ]
       },
+      {
+        path: "/users",
+        children: [
+          {
+            path: "lists", element: <UserLists />,},
+          { path: "lists/:id", element: <ListGames /> },
+          { path: "newlist", element: <NewList /> },
+        ]
+      },
     ]
   },
 ]);
@@ -44,6 +56,7 @@ const router = createBrowserRouter([
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState(null);
+  const [showAuthentication, setShowAuthentication] = useState(false);
 
 
   const signIn = (token, userId, username) => {
@@ -103,7 +116,7 @@ function App() {
 
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, username: username, signIn, signOut }}>
+    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, showAuthentication: showAuthentication, setShowAuthentication: setShowAuthentication, username: username, signIn, signOut }}>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
       </QueryClientProvider>

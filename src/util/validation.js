@@ -19,6 +19,15 @@ export const SignupSchema = Yup.object().shape({
        .oneOf([Yup.ref('password'), null], 'Passwords must match')
   });
 
+  export const EditListSchema = Yup.object().shape({
+    listName: Yup.string()
+      .required('List name is required').min(2, 'List name is too short')
+      .max(40, 'List name is too long'),
+
+    description: Yup.string()
+    .required('Description is required'),
+  });
+
   // export const SignInSchema = Yup.object().shape({
 
   // });

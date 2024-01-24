@@ -80,3 +80,24 @@ text-white hover:text-white hover:bg-sky-700
   border-2 rounded-lg overflow-hidden
   overflow-ellipsis whitespace-nowrap max-w-[180px];
 }
+
+.red-button{
+  @apply  text-sm font-semibold text-gray-200
+      bg-red-700 border-2 border-red-700
+        rounded-lg shadow-lg px-2 py-1
+        hover:bg-red-800 hover:border-red-800;
+}
+
+.red-button-2{
+  @apply  text-sm font-semibold text-gray-200
+      bg-red-700 border-2 border-red-700
+        rounded-md shadow-lg px-2 py-1
+        hover:bg-red-800 hover:border-red-800;
+}
+
+.gray-button{
+  @apply  text-sm font-semibold text-gray-200
+      bg-gray-600 border-2 border-gray-600
+        rounded-lg shadow-lg px-2 py-1
+        hover:bg-gray-800 hover:border-gray-800;
+}
