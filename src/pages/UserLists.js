@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getLists } from "../util/http";
 import GameList from "../components/GameList";
 
 const UserLists = () => {
+    useEffect(() => {
+        document.title = 'GameMania | My Lists';
+      }, []);
+      
     const lists = useQuery({
         queryKey: ["lists"],
         queryFn: () => getLists(),

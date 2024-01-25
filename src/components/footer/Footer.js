@@ -11,7 +11,7 @@ function Footer() {
   } = useContext(AuthContext);
 
   return (
-    <footer className="bg-gray-800">
+    <footer className="bg-DarkBlue">
       <div className='container max-w-6xl pt-8 pb-2 mt-8 mx-auto'>
         <div className='flex flex-col items-center mb-8 space-y-6 md:flex-row md:space-y-0 md:justify-between md:items-center'>
           <div className='flex flex-col items-center space-y-8 md:items start md:space-y-4'>

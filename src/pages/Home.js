@@ -1,10 +1,17 @@
+import { useEffect } from 'react';
 import HomeSection from '../components/HomeSection';
 import PlatformSection from '../components/best-games/PlatformSection';
 
 function HomePage() {
+  useEffect(() => {
+    document.title = 'GameMania | Home';
+  }, []);
+  
   return (
     <>
-      <h1 className="mx-10 md:mx-28 py-2">Welcome to GameMania, your destination for video games knowledge!</h1>
+      <h1 className="text-sm md:text-lg mx-10 md:mx-28 py-2">
+        Welcome to GameMania, your destination for video games knowledge!
+      </h1>
       <HomeSection 
       query="anticipatedgames" 
       queryKey={"anticipatedGames"} 

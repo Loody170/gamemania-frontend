@@ -13,14 +13,19 @@ function GamePage() {
     const passedQueryKey = `similarGamesTo${params.id}`;
     const similarGamesQuery = `games/similargames?id=${params.id}`
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [passedQueryKey]);
-
     const gameDetails = useQuery({
         queryKey: ["game", params.id],
         queryFn: () => getGames("games/" + params.id),
     });
+    
+    let gameName = "";
+    if(!gameDetails.isLoading){
+        gameName = gameDetails.data.data.mainDetails.name;
+    }
+    useEffect(() => {
+        document.title = "GameMania | " + gameName;
+        window.scrollTo(0, 0);
+    }, [passedQueryKey, gameName]);
 
     let randomImageUrl = "";
     if (!gameDetails.isLoading) {

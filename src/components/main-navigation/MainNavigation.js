@@ -16,7 +16,7 @@ function MainNavigation(props) {
     } = useContext(AuthContext);
 
     return (
-        <header className="bg-gray-800 container max-w-full mx-auto px-6 py-4 pt-6">
+        <header className="bg-DarkBlue container max-w-full mx-auto px-6 py-4 pt-6">
             <div className='flex justify-center' />
             <nav className="flex items-center justify-between font-bold text-white">
                 {/* logo */}

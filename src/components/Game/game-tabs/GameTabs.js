@@ -33,7 +33,7 @@ const GameTabs = (props) => {
 
     return (
         <>
-            <div className='border-4 border-violet-800  w-full  min-h-[20rem] '>
+            <div className='w-full  min-h-[20rem] '>
                 <ul className="tabs-ul shadow-xl flex flex-col sm:flex-row sm:space-y-0">
                     <GameTab
                         selectedTab={selectedTab}

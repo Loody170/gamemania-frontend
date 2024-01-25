@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import {StarIcon} from "../icons/icons"
 
 const SmallGameCard = (props) => {
     const imageUrl = `https://images.igdb.com/igdb/image/upload/t_cover_small/${props.imageId}.jpg`;
@@ -15,9 +16,7 @@ const SmallGameCard = (props) => {
                             {props.name}
                         </p>
                         <div className="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill={starColor} width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.54 5.82 22 8 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
+                            <StarIcon starColor={starColor} />
                             <span className="ml-2 text-2xl font-semibold">
                                 {rating}
                             </span>

@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CategoriesList from '../components/category/CategoriesList';
 import { gameGenres, gameThemes, gamePlatforms } from '../data/game-data';
 
 function BrowseGames() {
+    useEffect(() => {
+        document.title = 'GameMania | Browse Games';
+      }, []);
+  
     const [selectedTab, setSelectedTab] = useState('genres');
     const tabs = ['genres', 'themes', 'platforms'];
       

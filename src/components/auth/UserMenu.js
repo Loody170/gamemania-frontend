@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import {UserMenuArrow, MyListsIcon, SignOutIcon} from "../icons/icons"
 
 const UserMenu = (props) => {
     const navigate = useNavigate();
@@ -42,34 +43,16 @@ const UserMenu = (props) => {
                     <span className='user-box'
                         onClick={toggleMenu}>
                         {props.username}
-                        <svg className="w-4 h-4 inline-block" viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd"
-                                d="M10 14a1 1 0 01-.707-.293l-4-4a1 1 0 
-                            011.414-1.414L10 11.586l3.293-3.293a1 1 0 
-                            011.414 1.414l-4 4A1 1 0 0110 14z"
-                                clipRule="evenodd" />
-                        </svg>
+                        <UserMenuArrow />
                     </span>
                     {showMenu && (
                         <div ref={menuRef} className="user-menu">
                             <button className="mb-3 user-menu-button" onClick={handleUserLists}>
-                                <svg width="26" height="28" fill="currentColor" className="bi bi-list-task" viewBox="0 0 16 16">
-                                    <path fillRule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z" />
-                                    <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z" />
-                                    <path fillRule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z" />
-                                </svg>
+                                <MyListsIcon />
                                 <span>My Lists</span>
                             </button>
                             <button className="mt-1 user-menu-button" onClick={handleSignOut}>
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" strokeWidth="2" strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="feather feather-log-out">
-                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                                    <polyline points="16 17 21 12 16 7"></polyline>
-                                    <line x1="21" y1="12" x2="9" y2="12"></line>
-                                </svg>
+                                <SignOutIcon />
                                 <span>
                                     Sign Out
                                 </span>

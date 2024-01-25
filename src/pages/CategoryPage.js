@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CategoryGameCard from "../components/category/CategoryGameCard";
 import { useQuery } from "@tanstack/react-query";
@@ -9,6 +10,10 @@ const CategoryPage = (props) => {
     const [sort, setSort] = useState('rating-desc'); // default sort option
     const limit = 15;
     const query = `categories/${params.type}/${params.slug}?page=${page}&limit=${limit}&sort=${sort}`;
+
+    useEffect(() => {
+        document.title = `GameMania | ${capitalize(params.slug)} games`;
+    }, [params.slug]);
 
     const games = useQuery({
         queryKey: [query],
@@ -23,11 +28,15 @@ const CategoryPage = (props) => {
         setSort(sortOption); // update sort state
     }
 
+    function capitalize(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+
     return (
         <>
             <div className="mx-10 md:ml-44 md:mr-48 text-5xl mt-10 mb-8">
                 <h1 className="">
-                    Explore {params.slug} games
+                    Explore {capitalize(params.slug)} games
                 </h1>
                 <div className={`border-b-2 border-sky-500 w-52 py-1 font-bold mt-2`} />
             </div>

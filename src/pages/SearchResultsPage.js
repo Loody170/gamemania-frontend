@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import CategoryGameCard from "../components/category/CategoryGameCard";
 import { useQuery } from "@tanstack/react-query";
 import { getGames } from "../util/http";
 import { useSearchParams } from "react-router-dom";
 const SearchResultsPage = (props) => {
+    useEffect(() => {
+        document.title = 'GameMania | Search Results';
+      }, []);
+      
     const [searchParams] = useSearchParams();
     const q = searchParams.get('q');
     const query = `games/results?query=${q}`
