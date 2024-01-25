@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getList } from "../util/http";
 import CategoryGameCard from "../components/category/CategoryGameCard";
+import { LoadingIcon } from "../components/icons/icons";
 
 const ListGames = (props) => {
     const params = useParams();
@@ -16,9 +17,7 @@ const ListGames = (props) => {
     let dynamicContent;
     if (games.isLoading) {
         dynamicContent =
-            <div className="text-lg text-center mx-auto mt-10">
-                Loading...
-            </div>;
+            <LoadingIcon />
     }
     else if (games.data.data.length === 0) {
         dynamicContent =

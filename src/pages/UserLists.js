@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getLists } from "../util/http";
 import GameList from "../components/GameList";
+import { LoadingIcon } from "../components/icons/icons";
 
 const UserLists = () => {
     useEffect(() => {
@@ -33,7 +34,7 @@ const UserLists = () => {
                     <h2 className="text-black bg-gray-200 py-1.5 px-4 bg-opacity-50">
                         Loody's Lists
                     </h2>
-                    {lists.isLoading ? <p>Loading...</p> :
+                    {lists.isLoading ? <LoadingIcon /> :
                         lists.data.map((list) => (
                             <GameList
                                 key={list._id}

@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getGames } from '../util/http';
 import GameCard from './GameCard';
+import { LoadingIcon } from './icons/icons';
 
 function HomeSection(props) {
     const games = useQuery({
@@ -28,7 +29,8 @@ function HomeSection(props) {
     };
     let dynamicContent = "";
     if (games.isLoading) {
-        dynamicContent = <div className="text-lg text-center mx-auto mt-10">Loading...</div>
+        dynamicContent = <LoadingIcon />
+        // <div className="text-lg text-center mx-auto mt-10">Loading...</div>
     }
     else {
         if (!games.data.data || games.data.data.length === 0) {
@@ -39,7 +41,7 @@ function HomeSection(props) {
             dynamicContent = <>
                 <div className="mx-10 md:ml-28 md:mr-48 flex justify-between items-center">
                     <div>
-                        <h2 className="text-3xl">{props.title}</h2>
+                        <h2 className="text-2xl md:text-3xl">{props.title}</h2>
                         <div className={`border-b-2 ${props.color} w-20 py-1 font-bold`} />
                     </div>
 
@@ -51,7 +53,7 @@ function HomeSection(props) {
 
                 <section className='mb-16'>
                     <div ref={scrollContainer}
-                        className="mx-10 md:mx-48 flex overflow-x-scroll hide-scrollbar space-x-4 py-4">
+                        className="mx-4 md:mx-12 lg:mx-48 flex overflow-x-scroll hide-scrollbar space-x-4 py-4">
                         {/* game cards */}
                         {games.data.data.map(game => {
                             return (

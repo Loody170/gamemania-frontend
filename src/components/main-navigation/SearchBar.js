@@ -22,9 +22,6 @@ const SearchBar = () => {
         if (search !== '') {
             timer.current = setTimeout(async () => {
                 await results.refetch();
-                if (!results.isLoading) {
-                    console.log(results.data);
-                }
             }, 800); // delay of 800 milliseconds
         }
     }, [search, results]);
@@ -60,7 +57,7 @@ const SearchBar = () => {
 
             {results.isLoading && <div className='text-gray-400'>Loading...</div>}
             {isOverlayVisible &&
-                <div className='z-20 absolute left-0 mt-2 w-96 bg-gray-200 rounded shadow-lg overflow-hidden'>
+                <div className='z-20 absolute -left-4 md:left-0 mt-2 w-96 bg-gray-200 rounded shadow-lg overflow-hidden'>
                     <div>
                         <div className='flex justify-between items-center px-2 py-2'>
                             <h2 className='text-gray-800 font-semibold'>

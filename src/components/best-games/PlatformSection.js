@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { getGames } from '../../util/http';
 import SmallGameCard from './SmallGameCard';
+import { LoadingIcon } from '../icons/icons';
 
 const PlatformSection = (props) => {
     const query = `bestgames?platform=${props.platform}`;
@@ -17,9 +18,7 @@ const PlatformSection = (props) => {
             <h3 className='text-4xl capitalize -ml-4'>
                 {props.platform}
             </h3>
-            {games.isLoading ? <div className="text-lg text-center mx-auto mt-10">
-                Loading...
-            </div> :
+            {games.isLoading ? <LoadingIcon /> :
                 games.data.data.map(game =>
                     <SmallGameCard
                         key={game.id} id={game.id}

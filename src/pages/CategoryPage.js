@@ -4,6 +4,7 @@ import CategoryGameCard from "../components/category/CategoryGameCard";
 import { useQuery } from "@tanstack/react-query";
 import { getGames } from "../util/http";
 import { useState } from "react";
+import { LoadingIcon } from "../components/icons/icons";
 const CategoryPage = (props) => {
     const params = useParams();
     const [page, setPage] = useState(1);
@@ -63,9 +64,7 @@ const CategoryPage = (props) => {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-2 mt-8">
-                    {games.isLoading ? <div className="text-lg text-center mx-auto mt-10">
-                        Loading...
-                    </div> :
+                    {games.isLoading ? <LoadingIcon /> :
                         games.data.data.map((game) => {
                             return (
                                 <CategoryGameCard

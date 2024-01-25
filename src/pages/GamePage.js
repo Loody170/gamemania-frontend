@@ -7,6 +7,7 @@ import GameItem from "../components/Game/GameItem";
 import GameInformation from "../components/Game/GameInformation";
 import GameGallery from "../components/Game/GameGallery";
 import blackScreen from "../images/black-screen.jpg";
+import { LoadingIcon } from "../components/icons/icons";
 
 function GamePage() {
     const params = useParams();
@@ -52,7 +53,7 @@ function GamePage() {
                 <div className="image-gradiant" />
             </div>
 
-            {gameDetails.isLoading ? <div className="text-lg text-center mx-auto mt-10">Loading...</div> :
+            {gameDetails.isLoading ? <LoadingIcon />:
                 <GameItem image={gameDetails.data.data.imageUrl ? gameDetails.data.data.imageUrl : noCoverUrl}
                     gameDetails={gameDetails.data.data.mainDetails} />}
 
@@ -65,16 +66,12 @@ function GamePage() {
 
             {isGallery && <div className="mx-2 mt-2 mb-10">
                 {gameDetails.isLoading ?
-                    <div className="text-lg text-center mx-auto mt-10">
-                        Loading
-                    </div> :
+                    <LoadingIcon /> :
                     <GameGallery videos={gameDetails.data.data.videosIds}
                      screenshots={gameDetails.data.data.screenshotsUrls} />}
             </div>}
 
-            {gameDetails.isLoading ? <div className="text-lg text-center mx-auto mt-10">
-                Loading...
-            </div> : <GameInformation
+            {gameDetails.isLoading ? <LoadingIcon /> : <GameInformation
                 releaseDate={gameDetails.data.data.mainDetails.releaseDate}
                 developer={gameDetails.data.data.mainDetails.developer}
                 genres={gameDetails.data.data.mainDetails.genresNames}

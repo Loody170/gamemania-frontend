@@ -23,14 +23,14 @@
 }
 
 .navigation-signin-button {
-  @apply px-8 py-2 text-white
+  @apply text-white
   bg-red-800 border border-red-800
-   rounded-full shadow-md hover:text-red-800 hover:border-gray-200
+    shadow-md hover:text-red-800 hover:border-gray-200
     hover:bg-gray-200 whitespace-nowrap;
 }
 
 .search-bar-input {
-  @apply text-gray-800 w-80 placeholder:text-gray-400 px-2 py-1 rounded-lg bg-gray-100 font-normal;
+  @apply text-gray-800 w-72 md:w-80 placeholder:text-gray-400 px-2 py-1 rounded-lg bg-gray-100 font-normal;
 }
 
 .auth-active-tab-border {
@@ -45,19 +45,19 @@
    transition duration-200;
 }
 
-.user-menu{
+.user-menu {
   @apply absolute right-3 bg-gray-100 border rounded shadow-2xl mt-2 w-48 px-4 py-2;
 }
 
-.user-menu-button{
-  @apply mt-1 flex space-x-2 text-black hover:text-sky-700;
+.user-menu-button {
+  @apply mt-1 flex space-x-2 lg:text-black hover:text-red-500 lg:hover:text-sky-700;
 }
 
-.newlist-input{
+.newlist-input {
   @apply my-4 max-w-5xl mx-2 md:mx-0 flex flex-col space-y-0 md:flex-row md:space-x-24 md:space-y-0;
 }
 
-.newlist-submit-message{
+.newlist-submit-message {
   @apply text-center font-semibold mt-4 mb-4 text-white p-2 rounded-lg;
 }
 
@@ -83,13 +83,13 @@
 
 .gallery-scroll-arrow {
   @apply text-white text-5xl font-bold 
-  absolute top-44 left-0 z-10 h-16 w-16
+  absolute top-44 z-10 h-16 w-16
 bg-black bg-opacity-80;
 }
 
 .game-card {
   @apply shadow-lg rounded-lg min-h-full
-   sm:h-104 md:h-120 w-40 md:w-48
+   sm:h-104 md:h-120 w-36 md:w-48
    xl:w-56 cursor-pointer transform transition
    duration-500 ease-in-out
    hover:shadow-2xl hover:scale-105;
@@ -108,7 +108,7 @@ bg-black bg-opacity-80;
 
 .image-gradiant {
   @apply absolute top-0 bottom-0 right-0 left-0
-             bg-gradient-to-b from-transparent to-gray-800;
+    bg-gradient-to-b from-transparent to-gray-800;
 }
 
 .tabs-ul {
@@ -118,17 +118,15 @@ bg-black bg-opacity-80;
 .tab {
   @apply w-full p-4 border-r
    border-gray-200 
-   /* dark:border-gray-700 */
     rounded-lg
     focus:outline-none
     text-lg tracking-wider
-     /* dark:bg-gray-700 dark:text-white */;
 }
 
 .game-tab {
   @apply w-full p-4
     focus:outline-none
-    text-lg tracking-widest
+    text-lg tracking-widest;
 }
 
 .input {
@@ -141,7 +139,7 @@ bg-black bg-opacity-80;
 
 .user-box {
   @apply block capitalize cursor-pointer
-  text-lg px-2 py-1 bg-gray-800 font-bold
+  text-lg px-1 lg:px-2 py-0.5 lg:py-1 ml-1 lg:ml-0 bg-gray-800 font-bold
 text-white hover:text-white hover:bg-sky-700
   border-2 rounded-lg overflow-hidden
   overflow-ellipsis whitespace-nowrap max-w-[180px];
@@ -166,4 +164,51 @@ text-white hover:text-white hover:bg-sky-700
       bg-gray-600 border-2 border-gray-600
         rounded-lg shadow-lg px-2 py-1
         hover:bg-gray-800 hover:border-gray-800;
+}
+
+
+/*hamburger menu*/
+.hamburger{
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  transition: all 0.25s;
+  position: relative;
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom{
+position: absolute;
+width: 24px;
+height: 2px;
+top: 0;
+left: 0;
+background: #fff;
+transform:rotate(0);
+trnasition: all 0.5s;
+}
+
+.hamburger-middle{
+  transform: translateY(7px);
+}
+
+.hamburger-bottom{
+  transform: translateY(14px);
+}
+
+.open{
+  transform: rotate(90deg);
+}
+
+.open .hamburger-top{
+  transform: rotate(45deg) translateY(6px) translateX(6px);
+}
+
+.open .hamburger-middle{
+  display: none;
+}
+
+.open .hamburger-bottom{
+  transform: rotate(-45deg) translateY(6px) translateX(-6px);
 }

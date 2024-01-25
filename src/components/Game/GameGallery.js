@@ -26,10 +26,10 @@ const GameGallery = (props) => {
 
     return (
         <div className="relative">
-            <button onClick={() => scroll(600)} className="gallery-scroll-arrow">
+            <button onClick={() => scroll(600)} className="gallery-scroll-arrow left-0">
                 {"<"}
             </button>
-            <button onClick={() => scroll(-600)} className="gallery-scroll-arrow">
+            <button onClick={() => scroll(-600)} className="gallery-scroll-arrow right-0">
                 {">"}
             </button>
 

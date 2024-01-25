@@ -16,7 +16,7 @@ function GameCard(props) {
             <div className="game-card">
                 <Link to={`/games/${props.id}`}>
                     <img src={props.image} alt="game" className="w-full max-h-76 rounded-t-lg" />
-                    <div className="bg-white pl-6 pr-4 pt-2 rounded-b-lg">
+                    <div className="bg-white pl-2 md:pl-6 pr-2 md:pr-4 pt-2 rounded-b-lg">
                         <h3 className="text-md lg:text-lg xl:text-xl font-bold text-gray-800 mb-2 line-clamp-3">
                             {props.name}
                         </h3>

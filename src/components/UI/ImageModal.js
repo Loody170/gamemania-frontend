@@ -24,10 +24,10 @@ const ImageModal = (props) => {
         <div className="fixed z-50 top-0 left-0 w-full h-full bg-black bg-opacity-60 flex items-center justify-center"
             onClick={props.onClose}>
             <div
-                className="bg-white p-4 w-full max-w-md sm:max-w-xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl"
+                className="relative bg-white p-4 w-full max-w-md sm:max-w-xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl"
                 onClick={stopPropagation}>
                 <button
-                    className="text-gray-400 absolute right-1 -top-2 text-2xl font-semibold"
+                    className="text-gray-500 absolute right-1 -top-2 text-2xl font-semibold"
                     onClick={props.onClose}>
                     x
                 </button>

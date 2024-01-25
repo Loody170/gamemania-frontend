@@ -38,7 +38,7 @@ function BrowseGames() {
     return (
         <>
             <div className='my-12 container mx-auto max-w-7xl px-6 text-gray-900 md:px-0'>
-                <ul className="hidden tabs-ul rounded-lg shadow sm:flex">
+                <ul className="flex tabs-ul rounded-lg shadow ">
                     {tabs.map((tab) => (
                         <li className="w-full" key={tab}>
                             <button
@@ -57,6 +57,10 @@ function BrowseGames() {
 }
 
 export default BrowseGames;
+
+//alt approach for tabs clasnames
+// flex flex-col space-y-1 sm:flex-row sm:space-y-0
+
 
 //alt approach for rednering categories
 

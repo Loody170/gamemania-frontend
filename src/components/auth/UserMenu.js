@@ -35,8 +35,8 @@ const UserMenu = (props) => {
     };
 
     return (
-            <div className="group flex flex-col xl:flex-row xl:space-x-2 items-center">
-                <span>
+            <div className="group flex lg:flex-col xl:flex-row xl:space-x-2 items-center">
+                <span className="text-white font-bold ">
                     Welcome,
                 </span>
                 <div className="relative">
