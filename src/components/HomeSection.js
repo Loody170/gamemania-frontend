@@ -28,7 +28,19 @@ function HomeSection(props) {
         });
     };
     let dynamicContent = "";
-    if (games.isLoading) {
+    if (games.isError) {
+        dynamicContent =
+            <div className="text-lg text-center mx-auto">
+                <div className="mx-10 md:ml-28 md:mr-48 flex justify-between items-center">
+                    <div>
+                        <h2 className="text-2xl md:text-3xl">{props.title}</h2>
+                        <div className={`border-b-2 ${props.color} w-20 py-1 font-bold`} />
+                    </div>
+                </div>
+                <p className='mt-10 mb-20'>Error fetching Games</p>
+            </div>
+    }
+    else if (games.isLoading) {
         dynamicContent = <LoadingIcon />
         // <div className="text-lg text-center mx-auto mt-10">Loading...</div>
     }

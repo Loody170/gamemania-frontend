@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { queryClient, getGames } from "../util/http";
 import HomeSection from "../components/HomeSection";
@@ -10,6 +10,7 @@ import blackScreen from "../images/black-screen.jpg";
 import { LoadingIcon } from "../components/icons/icons";
 
 function GamePage() {
+    const navigate = useNavigate();
     const params = useParams();
     const passedQueryKey = `similarGamesTo${params.id}`;
     const similarGamesQuery = `games/similargames?id=${params.id}`
@@ -18,9 +19,11 @@ function GamePage() {
         queryKey: ["game", params.id],
         queryFn: () => getGames("games/" + params.id),
     });
-    
+    if (gameDetails.isError) {
+        navigate("/error", { state: { message: "Error loading game page" } });
+    }
     let gameName = "";
-    if(!gameDetails.isLoading){
+    if (!gameDetails.isLoading) {
         gameName = gameDetails.data.data.mainDetails.name;
     }
     useEffect(() => {
@@ -53,7 +56,7 @@ function GamePage() {
                 <div className="image-gradiant" />
             </div>
 
-            {gameDetails.isLoading ? <LoadingIcon />:
+            {gameDetails.isLoading ? <LoadingIcon /> :
                 <GameItem image={gameDetails.data.data.imageUrl ? gameDetails.data.data.imageUrl : noCoverUrl}
                     gameDetails={gameDetails.data.data.mainDetails} />}
 
@@ -68,7 +71,7 @@ function GamePage() {
                 {gameDetails.isLoading ?
                     <LoadingIcon /> :
                     <GameGallery videos={gameDetails.data.data.videosIds}
-                     screenshots={gameDetails.data.data.screenshotsUrls} />}
+                        screenshots={gameDetails.data.data.screenshotsUrls} />}
             </div>}
 
             {gameDetails.isLoading ? <LoadingIcon /> : <GameInformation
@@ -78,9 +81,9 @@ function GamePage() {
                 extraDetails={gameDetails.data.data.extraDetails} />
             }
             <HomeSection
-             query={similarGamesQuery} 
-             queryKey={passedQueryKey} 
-             title="Similar Games" color="border-teal-400" />
+                query={similarGamesQuery}
+                queryKey={passedQueryKey}
+                title="Similar Games" color="border-teal-400" />
         </>
     );
 }

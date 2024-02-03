@@ -12,19 +12,31 @@ const PlatformSection = (props) => {
         refetchOnWindowFocus: false,
         refetchOnReconnect: false,
     });
+    let dynamicContent = "";
+    if (games.isError) {
+        dynamicContent = <div className="text-lg text-center mx-auto mt-10">Error fetching Games</div>
+    }
+    else if (games.isLoading) {
+        dynamicContent = <LoadingIcon />
+    }
+    else if (games.data.data.length > 0) {
+        dynamicContent = games.data.data.map(game =>
+            <SmallGameCard
+                key={game.id} id={game.id}
+                name={game.name} imageId={game.cover.image_id}
+                rating={game.rating} />
+        )
+    }
+    else {
+        dynamicContent = <div className="text-lg text-center mx-auto mt-10">Could not get games</div>
+    }
 
     return (
         <>
             <h3 className='text-4xl capitalize -ml-4'>
                 {props.platform}
             </h3>
-            {games.isLoading ? <LoadingIcon /> :
-                games.data.data.map(game =>
-                    <SmallGameCard
-                        key={game.id} id={game.id}
-                        name={game.name} imageId={game.cover.image_id}
-                        rating={game.rating} />
-                )}
+            {dynamicContent}
         </>
     );
 }

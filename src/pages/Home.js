@@ -6,29 +6,29 @@ function HomePage() {
   useEffect(() => {
     document.title = 'GameMania | Home';
   }, []);
-  
+
   return (
     <>
       <h1 className="text-sm md:text-lg mx-10 md:mx-28 py-2">
         Welcome to GameMania, your destination for video games knowledge!
       </h1>
-      <HomeSection 
-      query="anticipatedgames" 
-      queryKey={"anticipatedGames"} 
-      title="Anticipated Games" 
-      color="border-cyan-600" />
+      <HomeSection
+        query="anticipatedgames"
+        queryKey={"anticipatedGames"}
+        title="Anticipated Games"
+        color="border-cyan-600" />
 
-      <HomeSection 
-      query="recenttopgames" 
-      queryKey={"recentTopGames"} 
-      title="Top Recent Games" 
-      color="border-pink-600" />
-      
-      <HomeSection 
-      query="upcominggames" 
-      queryKey={"comingSoon"} 
-      title="Coming Soon" 
-      color="border-green-600" />
+      <HomeSection
+        query="recenttopgames"
+        queryKey={"recentTopGames"}
+        title="Top Recent Games"
+        color="border-pink-600" />
+
+      <HomeSection
+        query="upcominggames"
+        queryKey={"comingSoon"}
+        title="Coming Soon"
+        color="border-green-600" />
 
       <div>
         <h2 className='mx-10 md:ml-28 md:mr-48 text-5xl mb-8'>Best Games on</h2>

@@ -2,12 +2,14 @@ import { useEffect } from "react";
 import CategoryGameCard from "../components/category/CategoryGameCard";
 import { useQuery } from "@tanstack/react-query";
 import { getGames } from "../util/http";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 const SearchResultsPage = (props) => {
+    const navigate = useNavigate();
+
     useEffect(() => {
         document.title = 'GameMania | Search Results';
-      }, []);
-      
+    }, []);
+
     const [searchParams] = useSearchParams();
     const q = searchParams.get('q');
     const query = `games/results?query=${q}`
@@ -19,7 +21,11 @@ const SearchResultsPage = (props) => {
         refetchOnWindowFocus: false,
         refetchOnReconnect: false,
     });
-    
+
+    if (games.isError) {
+        navigate("/error", { state: { message: "Error loading search results" } });
+    }
+
     return (
         <>
             <div className="mx-10 md:ml-44 md:mr-48 text-3xl mt-10 mb-8">

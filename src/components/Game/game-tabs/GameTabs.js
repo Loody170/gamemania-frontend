@@ -34,7 +34,7 @@ const GameTabs = (props) => {
     return (
         <>
             <div className='w-full  min-h-[20rem] '>
-                <ul className="tabs-ul shadow-xl flex flex-col sm:flex-row sm:space-y-0">
+                <ul className="tabs-ul shadow-xl flex">
                     <GameTab
                         selectedTab={selectedTab}
                         setSelectedTab={setSelectedTab}

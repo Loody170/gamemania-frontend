@@ -1,10 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getList } from "../util/http";
 import CategoryGameCard from "../components/category/CategoryGameCard";
 import { LoadingIcon } from "../components/icons/icons";
 
 const ListGames = (props) => {
+    const navigate = useNavigate();
     const params = useParams();
     const games = useQuery({
         queryKey: ["list", params.id,],
@@ -13,6 +14,10 @@ const ListGames = (props) => {
         refetchOnWindowFocus: false,
         refetchOnReconnect: false,
     });
+
+    if (games.isError) {
+        navigate("/error", { state: { message: "Error loading list games" } });
+    }
 
     let dynamicContent;
     if (games.isLoading) {
@@ -36,7 +41,7 @@ const ListGames = (props) => {
 
     return (
         <div className="mx-auto max-w-6xl">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-2 mt-8">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 md:gap-2 mt-8">
                 {dynamicContent}
             </div>
         </div>

@@ -12,13 +12,17 @@ import SearchResultsPage from "./pages/SearchResultsPage";
 import NewList from "./pages/NewList";
 import UserLists from "./pages/UserLists";
 import ListGames from "./pages/ListGames";
+import ErrorPage from "./pages/ErrorPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <NotFoundPage />,
     children: [
       { index: true, element: <HomePage /> },
+      { path: "error", element: <ErrorPage /> },
       {
         path: "/games",
         children: [
@@ -113,9 +117,9 @@ function App() {
       isLoggedIn: isLoggedIn,
       showAuthentication: showAuthentication,
       setShowAuthentication: setShowAuthentication,
-      username: username, 
-      signIn, signOut 
-      }}>
+      username: username,
+      signIn, signOut
+    }}>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
       </QueryClientProvider>

@@ -26,7 +26,7 @@
   @apply text-white
   bg-red-800 border border-red-800
     shadow-md hover:text-red-800 hover:border-gray-200
-    hover:bg-gray-200 whitespace-nowrap;
+    hover:bg-gray-200;
 }
 
 .search-bar-input {
@@ -102,7 +102,7 @@ bg-black bg-opacity-80;
 }
 
 .remove-game-button {
-  @apply absolute bottom-0 left-32 mb-1 mr-1 md:text-[0.850rem]
+  @apply absolute bottom-0 right-2 text-[0.850rem]
   font-semibold text-red-800 hover:text-red-600 hover:scale-110 duration-200;
 }
 
@@ -120,7 +120,7 @@ bg-black bg-opacity-80;
    border-gray-200 
     rounded-lg
     focus:outline-none
-    text-lg tracking-wider
+    text-lg tracking-wider;
 }
 
 .game-tab {
@@ -166,9 +166,8 @@ text-white hover:text-white hover:bg-sky-700
         hover:bg-gray-800 hover:border-gray-800;
 }
 
-
 /*hamburger menu*/
-.hamburger{
+.hamburger {
   cursor: pointer;
   width: 24px;
   height: 24px;
@@ -178,37 +177,37 @@ text-white hover:text-white hover:bg-sky-700
 
 .hamburger-top,
 .hamburger-middle,
-.hamburger-bottom{
-position: absolute;
-width: 24px;
-height: 2px;
-top: 0;
-left: 0;
-background: #fff;
-transform:rotate(0);
-trnasition: all 0.5s;
+.hamburger-bottom {
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  top: 0;
+  left: 0;
+  background: #fff;
+  transform: rotate(0);
+  trnasition: all 0.5s;
 }
 
-.hamburger-middle{
+.hamburger-middle {
   transform: translateY(7px);
 }
 
-.hamburger-bottom{
+.hamburger-bottom {
   transform: translateY(14px);
 }
 
-.open{
+.open {
   transform: rotate(90deg);
 }
 
-.open .hamburger-top{
+.open .hamburger-top {
   transform: rotate(45deg) translateY(6px) translateX(6px);
 }
 
-.open .hamburger-middle{
+.open .hamburger-middle {
   display: none;
 }
 
-.open .hamburger-bottom{
+.open .hamburger-bottom {
   transform: rotate(-45deg) translateY(6px) translateX(-6px);
 }

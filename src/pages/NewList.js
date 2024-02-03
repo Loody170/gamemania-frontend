@@ -5,7 +5,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { EditListSchema } from '../util/validation';
 import { addList, editList } from "../util/http";
 
-const NewList = () => {      
+const NewList = () => {
     const navigate = useNavigate();
     const [showMessage, setShowMessage] = useState(false);
     const [showErrorMessage, setShowErrorMessage] = useState(false);
@@ -18,8 +18,8 @@ const NewList = () => {
 
     useEffect(() => {
         document.title = `GameMania | ${listToEdit ? 'Edit List' : 'New List'}`;
-      }, [listToEdit]);
-  
+    }, [listToEdit]);
+
     const queryClient = useQueryClient();
     useEffect(() => {
         if (listToEdit) {

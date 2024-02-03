@@ -5,11 +5,11 @@ import { gameGenres, gameThemes, gamePlatforms } from '../data/game-data';
 function BrowseGames() {
     useEffect(() => {
         document.title = 'GameMania | Browse Games';
-      }, []);
-  
+    }, []);
+
     const [selectedTab, setSelectedTab] = useState('genres');
     const tabs = ['genres', 'themes', 'platforms'];
-      
+
     const renderContent = () => {
         switch (selectedTab) {
             case 'genres':

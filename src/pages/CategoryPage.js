@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import CategoryGameCard from "../components/category/CategoryGameCard";
 import { useQuery } from "@tanstack/react-query";
 import { getGames } from "../util/http";
 import { useState } from "react";
 import { LoadingIcon } from "../components/icons/icons";
 const CategoryPage = (props) => {
+    const navigate = useNavigate();
     const params = useParams();
     const [page, setPage] = useState(1);
     const [sort, setSort] = useState('rating-desc'); // default sort option
@@ -24,6 +25,10 @@ const CategoryPage = (props) => {
         refetchOnReconnect: false,
     });
 
+    if (games.isError) {
+        navigate("/error", { state: { message: "Error loading category page" } });
+    }
+
     function handleSortChange(event) {
         const sortOption = event.target.value;
         setSort(sortOption); // update sort state
@@ -31,7 +36,7 @@ const CategoryPage = (props) => {
 
     function capitalize(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
-      }
+    }
 
     return (
         <>
@@ -63,7 +68,7 @@ const CategoryPage = (props) => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-2 mt-8">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 md:gap-2 mt-8">
                     {games.isLoading ? <LoadingIcon /> :
                         games.data.data.map((game) => {
                             return (
