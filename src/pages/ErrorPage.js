@@ -1,10 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { Link } from "react-router-dom";
-import Footer from "../components/footer/Footer";
-import MainNavigation from "../components/main-navigation/MainNavigation";
-
 const ErrorPage = (props) => {
     const location = useLocation();
     const navigate = useNavigate();

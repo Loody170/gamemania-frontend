@@ -1,9 +1,12 @@
 import { QueryClient } from "@tanstack/react-query";
 export const queryClient = new QueryClient();
 
+// url to my backend rest api
+const baseUrl = 'https://gamemania-backend-6b82dc789f10.herokuapp.com/';
+
 export const getGames = async (q) => {
     // console.log("q is " + q);
-    const response = await fetch('http://localhost:8080/' + q);
+    const response = await fetch(baseUrl + q);
     if (!response.ok) {
         const error = new Error('An error occurred while fetching the games');
         error.code = response.status;
@@ -15,7 +18,7 @@ export const getGames = async (q) => {
 };
 
 export const signup = async (authData) => {
-    const response = await fetch('http://localhost:8080/auth/signup', {
+    const response = await fetch(baseUrl + 'auth/signup', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -39,7 +42,7 @@ export const signup = async (authData) => {
 };
 
 export const signIn = async(authData)=>{
-    const response = await fetch('http://localhost:8080/auth/signin', {
+    const response = await fetch(baseUrl + 'auth/signin', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -63,7 +66,7 @@ export const signIn = async(authData)=>{
 export const addList = async(list) => {
     const token = localStorage.getItem('token');
     try {
-        const response = await fetch('http://localhost:8080/users/lists', {
+        const response = await fetch(baseUrl + 'users/lists', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -89,7 +92,7 @@ export const addList = async(list) => {
 export const editList = async(list) => {
     const token = localStorage.getItem('token');
     try {
-        const response = await fetch(`http://localhost:8080/users/lists/${list.id}`, {
+        const response = await fetch(baseUrl + `users/lists/${list.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -115,7 +118,7 @@ export const editList = async(list) => {
 export async function getLists() {
     const token = localStorage.getItem('token');
     try {
-        const response = await fetch(`http://localhost:8080/users/lists`, {
+        const response = await fetch(baseUrl + `users/lists`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -137,7 +140,7 @@ export async function getLists() {
 export async function getList(listId) {
     const token = localStorage.getItem('token');
     try {
-        const response = await fetch(`http://localhost:8080/users/lists/${listId}`, {
+        const response = await fetch(baseUrl + `users/lists/${listId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -160,7 +163,7 @@ export async function getList(listId) {
 export async function deleteList({listId}) {
     const token = localStorage.getItem('token');
     try {
-        const response = await fetch(`http://localhost:8080/users/lists/${listId}`, {
+        const response = await fetch(baseUrl + `users/lists/${listId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -183,7 +186,7 @@ export async function deleteList({listId}) {
 export async function addGame({ listId, gameId }) {
     const token = localStorage.getItem('token');
     try {
-        const response = await fetch(`http://localhost:8080/users/lists/${listId}/games`, {
+        const response = await fetch(baseUrl + `users/lists/${listId}/games`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -207,7 +210,7 @@ export async function addGame({ listId, gameId }) {
 export async function deleteGame({listId, gameId}) {
     const token = localStorage.getItem('token');
     try {
-        const response = await fetch(`http://localhost:8080/users/lists/${listId}/games/${gameId}`, {
+        const response = await fetch(baseUrl + `users/lists/${listId}/games/${gameId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
